@@ -33,12 +33,20 @@ export const callPhone = (phoneNumber: string) => {
   })
 }
 
-/** 复制文本到剪贴板 */
+/** 复制文本到剪贴板；未配置隐私指引导致调用失败时，弹窗让用户手动记录 */
 export const copyText = (data: string, tip = '已复制') => {
   wx.setClipboardData({
     data,
     success: () => {
       wx.showToast({ title: tip, icon: 'success', duration: 1200 })
+    },
+    fail: () => {
+      wx.showModal({
+        title: '请手动记录',
+        content: data,
+        showCancel: false,
+        confirmText: '知道了',
+      })
     },
   })
 }
