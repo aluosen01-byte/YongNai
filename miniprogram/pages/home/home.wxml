@@ -22,8 +22,8 @@
       </view>
 
       <view class="hero-actions">
-        <view class="btn btn-ink hero-btn hero-btn-left" hover-class="btn-hover" bindtap="goSample">免费寄样</view>
-        <view class="btn btn-line hero-btn" hover-class="btn-hover" bindtap="goSelector">选胶助手</view>
+        <view class="btn btn-ink hero-btn hero-btn-left" hover-class="btn-hover" bindtap="goProducts">浏览产品</view>
+        <view class="btn btn-line hero-btn" hover-class="btn-hover" bindtap="goQuote">获取报价</view>
       </view>
     </view>
   </view>

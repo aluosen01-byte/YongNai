@@ -86,6 +86,14 @@ Page({
     goTab('/pages/selector/selector')
   },
 
+  goProducts() {
+    goTab('/pages/products/products')
+  },
+
+  goQuote() {
+    goTab('/pages/contact/contact')
+  },
+
   goSample() {
     wx.navigateTo({ url: '/pages/sample/sample' })
   },
