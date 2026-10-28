@@ -98,3 +98,21 @@ node .tools/check-data.js
 # 重新渲染设计预览（需要本机安装 Chrome）
 pwsh .tools/shoot.ps1
 ```
+
+## 上传到微信后台
+
+用开发者工具自带的 CLI 上传（需先在该工具里登录，并在设置中开启服务端口）：
+
+```powershell
+& 'D:\微信web开发者工具\cli.bat' upload `
+    --project D:\projects\YongNai `
+    -v 1.0.0 `
+    -d "版本说明"
+```
+
+`cli.bat islogin` 可查登录状态，`cli.bat preview` 只生成预览二维码、不产生版本。
+
+**`tsconfig.json` 的 `target` 必须保持 `ES2018`。** 开发者工具内置的 JS 解析器不支持
+`??` 与 `?.`（ES2020 语法）：`tsc` 能通过，但 `cli upload` 会在编译校验阶段报
+`SyntaxError: Unexpected token ?` 并中断上传。如果需要 ES2020 的语法糖，请先确认
+这条限制是否仍然存在。
