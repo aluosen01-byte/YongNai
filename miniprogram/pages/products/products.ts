@@ -8,12 +8,35 @@ interface Chip {
   count: number
 }
 
+/** 列表只需要这几个字段：不要把 points / keywords 等一起推到视图层 */
+interface ListItem {
+  model: string
+  name: string
+  seriesName: string
+  image: string
+  usage: string
+  packing: string
+  solid?: string
+  wood?: string
+}
+
+const toListItem = (p: Product): ListItem => ({
+  model: p.model,
+  name: p.name,
+  seriesName: p.seriesName,
+  image: p.image,
+  usage: p.usage,
+  packing: p.packing,
+  solid: p.solid,
+  wood: p.wood,
+})
+
 Page({
   data: {
     chips: [] as Chip[],
     active: 'all',
     keyword: '',
-    list: [] as Product[],
+    list: [] as ListItem[],
     total: 0,
     seriesDesc: '',
   },
@@ -61,7 +84,7 @@ Page({
 
     const series = SERIES.find((item) => item.id === active)
     this.setData({
-      list,
+      list: list.map(toListItem),
       total: list.length,
       seriesDesc: series ? series.desc : '',
     })
