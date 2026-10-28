@@ -325,9 +325,15 @@ const SERIES_ORDER: Record<string, number> = SERIES.reduce<Record<string, number
   {}
 )
 
+/** 取系列排序位次；未知系列排到最后 */
+const seriesRank = (item: Product): number => {
+  const rank = SERIES_ORDER[item.seriesId]
+  return rank === undefined ? 99 : rank
+}
+
 /** 按系列顺序排列，避免「全部」列表里各系列互相穿插 */
 export const PRODUCTS: Product[] = RAW_PRODUCTS.slice().sort(
-  (a, b) => (SERIES_ORDER[a.seriesId] ?? 99) - (SERIES_ORDER[b.seriesId] ?? 99)
+  (a, b) => seriesRank(a) - seriesRank(b)
 )
 
 /** 按型号取产品 */
