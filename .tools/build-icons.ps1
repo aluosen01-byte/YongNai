@@ -6,11 +6,15 @@ if (-not (Test-Path $outDir)) { New-Item -ItemType Directory -Path $outDir -Forc
 $SIZE   = 81                 # final canvas (WeChat recommends 81 x 81)
 $SS     = 4                  # supersample factor for smooth curves
 $S      = $SIZE * $SS
-$MARGIN = 10.0 * $SS
-$SCALE  = ($SIZE - 20.0) / 24.0 * $SS    # 24-unit design grid -> padded canvas
+$PAD    = 6.0                # inner padding: smaller = bigger glyph
+$MARGIN = $PAD * $SS
+$SCALE  = ($SIZE - 2.0 * $PAD) / 24.0 * $SS    # 24-unit design grid -> padded canvas
 $strokeW = 1.9 * $SCALE
 
-$cNormal = [System.Drawing.ColorTranslator]::FromHtml("#A2ABB1")
+# NOTE: keep this file pure ASCII. Windows PowerShell reads BOM-less scripts as
+# ANSI, so a CJK comment can swallow the following newline and break the next line.
+# Normal colour matches the tabBar label colour (#8C979D) so icon and text agree.
+$cNormal = [System.Drawing.ColorTranslator]::FromHtml("#8C979D")
 $cActive = [System.Drawing.ColorTranslator]::FromHtml("#1F3A44")
 
 function New-RoundedPath([double]$x, [double]$y, [double]$w, [double]$h, [double]$r) {
@@ -183,6 +187,6 @@ foreach ($n in @('home', 'products', 'selector', 'contact')) {
   $i++
 }
 $pg.Dispose()
-$prev.Save("D:\projects\YongNai\.ppt_extract\icons-preview.png", [System.Drawing.Imaging.ImageFormat]::Png)
+$prev.Save("D:\projects\YongNai\.tmp\shots\icons-preview.png", [System.Drawing.Imaging.ImageFormat]::Png)
 $prev.Dispose()
 Write-Output "preview saved"
