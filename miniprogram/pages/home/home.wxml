@@ -3,6 +3,13 @@
 
   <!-- ===== 主视觉（参考贝之然首页：白底首屏 + 细线分隔） ===== -->
   <view class="hero">
+    <!-- 封面斜线：米色细线 / 墨青条 / 橙色块，三条平行斜切，skewX(5deg) 右下倾斜 -->
+    <view class="hero-deco">
+      <view class="hero-deco-line"></view>
+      <view class="hero-deco-band"></view>
+      <view class="hero-deco-block"></view>
+    </view>
+
     <view class="hero-inner">
       <text class="hero-kicker">YONGNAI ADHESIVE · 水性环保胶粘剂</text>
 
@@ -23,7 +30,7 @@
 
       <view class="hero-actions">
         <view class="btn btn-ink hero-btn hero-btn-left" hover-class="btn-hover" bindtap="goProducts">浏览产品</view>
-        <view class="btn btn-line hero-btn" hover-class="btn-hover" bindtap="goQuote">获取报价</view>
+        <view class="btn btn-line hero-btn hero-btn-ghost" hover-class="btn-hover" bindtap="goQuote">获取报价</view>
       </view>
     </view>
   </view>

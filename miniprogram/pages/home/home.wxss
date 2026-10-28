@@ -15,6 +15,48 @@
   z-index: 2;
 }
 
+/* ---------- 封面斜线（对齐贝之然首屏构图） ----------
+   一个斜切容器内放三条竖条，天然平行；比旋转方块更可控，不会溢出盖住文字。
+   skewX(5deg) + origin right center：上端偏左、下端偏右（右下倾斜）。 */
+
+.hero-deco {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 22%;
+  transform: skewX(5deg);
+  transform-origin: right center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-deco-line,
+.hero-deco-band,
+.hero-deco-block {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.hero-deco-line {
+  left: 0;
+  width: 6rpx;
+  background: #F4F1EA;
+}
+
+.hero-deco-band {
+  left: 14rpx;
+  width: 44rpx;
+  background: #1F3A44;
+}
+
+.hero-deco-block {
+  left: 66rpx;
+  right: 0;
+  background: #F0A22E;
+}
+
 .hero-kicker {
   display: block;
   padding-top: 30rpx;
@@ -78,6 +120,7 @@
 .hero-actions {
   display: flex;
   margin-top: 36rpx;
+  max-width: 80%;
 }
 
 .hero-btn {
@@ -86,6 +129,11 @@
 
 .hero-btn-left {
   margin-right: 20rpx;
+}
+
+/* 斜线会从按钮底部穿过，描边按钮需要白底才不会透出橙色 */
+.hero-btn-ghost {
+  background: #FFFFFF;
 }
 
 /* ---------- 数据条 ---------- */
