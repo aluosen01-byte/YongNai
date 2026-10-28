@@ -57,6 +57,24 @@
   line-height: 1.75;
 }
 
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24rpx;
+}
+
+.hero-tag {
+  font-size: 21rpx;
+  color: #1F3A44;
+  background: #FFFFFF;
+  border: 1rpx solid #D8D2C6;
+  height: 44rpx;
+  line-height: 42rpx;
+  padding: 0 18rpx;
+  border-radius: 0;
+  margin: 0 12rpx 12rpx 0;
+}
+
 .hero-actions {
   display: flex;
   margin-top: 36rpx;

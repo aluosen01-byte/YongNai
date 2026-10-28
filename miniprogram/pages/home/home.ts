@@ -20,6 +20,7 @@ interface QuickEntry {
 
 Page({
   data: {
+    heroTags: ['非易燃易爆', '65℃ 水煮 3 小时', '中英文 · 可贴牌'],
     stats: STATS,
     advantages: ADVANTAGES,
     advantageNote: ADVANTAGE_NOTE,
