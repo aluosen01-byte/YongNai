@@ -1,10 +1,10 @@
 /**
  * 全局样式 —— 永耐胶水
- * 主色：深青 #1F3A44 / 琥珀 #F0A22E / 米白 #F4F1EA
+ * 主色：深青 #1F3A44 / 琥珀 #F0A22E / 底色 #F7F5F0 / 次级底 #F4F1EA / 分隔线 #D8D2C6
  */
 
 page {
-  background: #F4F1EA;
+  background: #F7F5F0;
   color: #1F3A44;
   font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
   font-size: 28rpx;

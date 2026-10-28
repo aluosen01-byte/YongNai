@@ -5,7 +5,7 @@
 .hero {
   position: relative;
   padding: 40rpx 0 44rpx;
-  background: linear-gradient(180deg, #EDE7DA 0%, #F4F1EA 100%);
+  background: linear-gradient(180deg, #EDE7DA 0%, #F7F5F0 100%);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -10,16 +10,6 @@
   overflow: hidden;
 }
 
-.hero-glow {
-  position: absolute;
-  right: -160rpx;
-  top: -170rpx;
-  width: 520rpx;
-  height: 520rpx;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(240, 162, 46, 0.12) 0%, rgba(240, 162, 46, 0) 68%);
-}
-
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -48,7 +38,7 @@
   font-size: 52rpx;
   font-weight: 700;
   color: #F0A22E;
-  letter-spacing: 3rpx;
+  letter-spacing: 2rpx;
   line-height: 1.28;
 }
 
