@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "选胶助手",
-  "navigationBarBackgroundColor": "#244754"
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black"
 }

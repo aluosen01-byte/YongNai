@@ -4,19 +4,10 @@
 
 .head {
   position: relative;
-  padding: 36rpx 32rpx 96rpx;
-  background: linear-gradient(158deg, #244754 0%, #1B3540 58%, #102329 100%);
+  padding: 30rpx 32rpx 36rpx;
+  background: #FFFFFF;
+  border-bottom: 1rpx solid #D8D2C6;
   overflow: hidden;
-}
-
-.head-glow {
-  position: absolute;
-  right: -140rpx;
-  top: -160rpx;
-  width: 480rpx;
-  height: 480rpx;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(240, 162, 46, 0.24) 0%, rgba(240, 162, 46, 0) 70%);
 }
 
 .head-inner {
@@ -27,7 +18,7 @@
 .head-micro {
   font-size: 17rpx;
   font-weight: 600;
-  color: #F0A22E;
+  color: #2F6FB2;
   letter-spacing: 3rpx;
 }
 
@@ -35,7 +26,7 @@
   margin-top: 14rpx;
   font-size: 46rpx;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #1F3A44;
   letter-spacing: 2rpx;
 }
 
@@ -43,23 +34,23 @@
   margin-top: 18rpx;
   font-size: 30rpx;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.92);
+  color: #1F3A44;
   letter-spacing: 3rpx;
 }
 
 .head-slogan-en {
   margin-top: 6rpx;
   font-size: 16rpx;
-  color: rgba(240, 162, 46, 0.78);
+  color: #A56C06;
   letter-spacing: 2.6rpx;
 }
 
 .founder {
   display: flex;
   align-items: center;
-  margin-top: 32rpx;
-  padding-top: 28rpx;
-  border-top: 1rpx solid rgba(255, 255, 255, 0.12);
+  margin-top: 30rpx;
+  padding-top: 26rpx;
+  border-top: 1rpx solid #E7E1D5;
 }
 
 .founder-avatar {
@@ -83,7 +74,7 @@
 .founder-name {
   font-size: 30rpx;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1F3A44;
   letter-spacing: 1rpx;
 }
 
@@ -91,21 +82,21 @@
   margin-left: 10rpx;
   font-size: 17rpx;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.42);
+  color: #9AA4A9;
   letter-spacing: 0.6rpx;
 }
 
 .founder-role {
   margin-top: 3rpx;
   font-size: 21rpx;
-  color: rgba(255, 255, 255, 0.52);
+  color: #6E777C;
   letter-spacing: 1rpx;
 }
 
 /* ---------- 联系行 ---------- */
 
 .rows {
-  margin-top: -66rpx;
+  margin-top: 28rpx;
   position: relative;
   padding: 4rpx 28rpx;
 }

@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "免费寄样",
-  "navigationBarBackgroundColor": "#244754"
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black"
 }

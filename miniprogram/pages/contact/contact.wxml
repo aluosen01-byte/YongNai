@@ -3,7 +3,6 @@
 
   <!-- 头部 -->
   <view class="head">
-    <view class="head-glow"></view>
     <view class="head-inner">
       <view class="head-micro">CONTACT US</view>
       <view class="head-title">联系我们</view>
