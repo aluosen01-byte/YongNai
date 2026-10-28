@@ -1,0 +1,136 @@
+<!--pages/detail/detail.wxml-->
+<view class="page">
+
+  <block wx:if="{{notFound}}">
+    <view class="empty">
+      <view class="empty-title">没有找到这个型号</view>
+      <view class="empty-desc">可能链接已失效，去产品中心看看。</view>
+      <view class="empty-actions">
+        <view class="btn btn-ink btn-sm" hover-class="btn-hover" bindtap="backToList">返回产品中心</view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{product}}">
+
+    <!-- 产品图 -->
+    <view class="hero" bindtap="previewImage">
+      <view class="hero-bg"></view>
+      <image class="hero-img" src="{{product.image}}" mode="aspectFit" />
+      <view class="hero-badge">{{product.seriesName}}</view>
+    </view>
+
+    <!-- 标题 -->
+    <view class="wrap">
+      <view class="title-block">
+        <view class="title-model num">{{product.model}}</view>
+        <view class="title-name">{{product.name}}</view>
+        <view class="title-usage">{{product.usage}}</view>
+        <view class="title-chips">
+          <text class="tag tag-amber">{{product.usageEn}}</text>
+          <text class="tag">{{product.packing}}</text>
+          <text wx:if="{{product.solid}}" class="tag">固含量 {{product.solid}}</text>
+        </view>
+      </view>
+
+      <!-- 规格 -->
+      <view class="sec">
+        <view class="sec-head">
+          <view class="sec-bar"></view>
+          <text class="sec-title">规格参数</text>
+          <text class="sec-en">Spec</text>
+        </view>
+        <view class="spec card">
+          <view class="spec-row" wx:for="{{specs}}" wx:key="label">
+            <text class="spec-label">{{item.label}}</text>
+            <text class="spec-value">{{item.value}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 特点 -->
+      <view class="sec">
+        <view class="sec-head">
+          <view class="sec-bar"></view>
+          <text class="sec-title">产品特点</text>
+          <text class="sec-en">Features</text>
+        </view>
+        <view class="points card card-pad">
+          <view class="point" wx:for="{{product.points}}" wx:key="*this">
+            <view class="point-dot"></view>
+            <text class="point-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 施工与验收 -->
+      <view class="sec">
+        <view class="sec-head">
+          <view class="sec-bar"></view>
+          <text class="sec-title">施工与验收</text>
+          <text class="sec-en">Process</text>
+        </view>
+        <view class="notes card card-pad">
+          <view class="note-row">
+            <text class="note-key">施工条件</text>
+            <text class="note-val">建议 5℃ 以上施工，木材含水率控制在 8%~12%。</text>
+          </view>
+          <view class="hair"></view>
+          <view class="note-row">
+            <text class="note-key">验收口径</text>
+            <text class="note-val">可约定 65℃ 水煮 3 小时，胶层不开裂。</text>
+          </view>
+          <view class="hair"></view>
+          <view class="note-row">
+            <text class="note-key">环保属性</text>
+            <text class="note-val">水性体系，非易燃易爆；检测报告可按需提供。</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 相关型号 -->
+      <view wx:if="{{related.length}}" class="sec">
+        <view class="sec-head">
+          <view class="sec-bar"></view>
+          <text class="sec-title">相关型号</text>
+          <text class="sec-en">Related</text>
+        </view>
+        <view class="rel card">
+          <view
+            class="rel-row"
+            wx:for="{{related}}"
+            wx:key="model"
+            data-model="{{item.model}}"
+            bindtap="openRelated"
+            hover-class="rel-hover"
+          >
+            <image class="rel-img" src="{{item.image}}" mode="aspectFit" lazy-load />
+            <view class="rel-body">
+              <view class="rel-model num">{{item.model}}</view>
+              <view class="rel-name">{{item.name}}</view>
+              <view class="rel-usage">{{item.usage}}</view>
+            </view>
+            <view class="arrow"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="note-foot">
+        本页参数供选型参考，批量订单以确认的报价单与工艺卡为准。
+      </view>
+    </view>
+
+    <view class="bottom-hold"></view>
+
+    <!-- 底部操作条 -->
+    <view class="bottom-bar">
+      <view class="bar-secondary" hover-class="btn-hover" bindtap="callSales">
+        <view class="bar-secondary-title">电话咨询</view>
+        <view class="bar-secondary-sub">137 2375 7790</view>
+      </view>
+      <view class="btn btn-amber bar-primary" hover-class="btn-hover" bindtap="goSample">免费寄样</view>
+    </view>
+
+  </block>
+
+</view>

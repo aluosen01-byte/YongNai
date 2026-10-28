@@ -1,0 +1,238 @@
+/**
+ * 全局样式 —— 永耐胶水
+ * 主色：深青 #1F3A44 / 琥珀 #F0A22E / 米白 #F4F1EA
+ */
+
+page {
+  background: #F4F1EA;
+  color: #1F3A44;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+  font-size: 28rpx;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+view,
+text,
+scroll-view {
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+.wrap {
+  padding: 0 32rpx;
+}
+
+/* ---------- 卡片 ---------- */
+
+.card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 28rpx rgba(31, 58, 68, 0.05);
+}
+
+.card-pad {
+  padding: 32rpx;
+}
+
+/* ---------- 章节标题 ---------- */
+
+.sec {
+  margin-top: 56rpx;
+}
+
+.sec-head {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 24rpx;
+}
+
+.sec-bar {
+  width: 8rpx;
+  height: 32rpx;
+  border-radius: 4rpx;
+  background: #F0A22E;
+  margin-right: 16rpx;
+  transform: translateY(-4rpx);
+}
+
+.sec-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1F3A44;
+  letter-spacing: 1rpx;
+  line-height: 1.2;
+}
+
+.sec-en {
+  margin-left: 14rpx;
+  font-size: 18rpx;
+  font-weight: 600;
+  color: #B3A98F;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+  transform: translateY(-2rpx);
+}
+
+.sec-sub {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #6E777C;
+  line-height: 1.65;
+}
+
+.sec-more {
+  margin-left: auto;
+  font-size: 24rpx;
+  color: #8C979D;
+  padding-left: 16rpx;
+}
+
+/* ---------- 按钮 ---------- */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+  transition: opacity 0.15s;
+}
+
+.btn-ink {
+  background: #1F3A44;
+  color: #FFFFFF;
+}
+
+.btn-amber {
+  background: #F0A22E;
+  color: #1F3A44;
+}
+
+.btn-line {
+  background: transparent;
+  border: 2rpx solid rgba(31, 58, 68, 0.22);
+  color: #1F3A44;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 2rpx solid rgba(255, 255, 255, 0.34);
+  color: #FFFFFF;
+}
+
+.btn-sm {
+  height: 64rpx;
+  font-size: 25rpx;
+  border-radius: 12rpx;
+  padding: 0 26rpx;
+}
+
+.btn-hover {
+  opacity: 0.72;
+}
+
+/* ---------- 标签 ---------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 34rpx;
+  padding: 0 12rpx;
+  border-radius: 6rpx;
+  font-size: 20rpx;
+  color: #7A8489;
+  background: #F1EDE4;
+  letter-spacing: 0.5rpx;
+}
+
+.tag-amber {
+  color: #A56C06;
+  background: #FCF0DA;
+}
+
+.tag-ink {
+  color: #FFFFFF;
+  background: #1F3A44;
+}
+
+/* ---------- 分割线 / 小字 ---------- */
+
+.hair {
+  height: 1rpx;
+  background: #EDE8DE;
+}
+
+.micro {
+  font-size: 20rpx;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+  color: #B3A98F;
+  font-weight: 600;
+}
+
+.muted {
+  color: #6E777C;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* ---------- 底部固定操作条 ---------- */
+
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding: 18rpx 32rpx calc(18rpx + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1rpx solid #EDE8DE;
+}
+
+.bottom-hold {
+  height: 150rpx;
+}
+
+/* ---------- 通用列表行 ---------- */
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow {
+  width: 14rpx;
+  height: 14rpx;
+  border-right: 3rpx solid #C2CBCF;
+  border-top: 3rpx solid #C2CBCF;
+  transform: rotate(45deg);
+  flex: none;
+}
+
+/* ---------- 空状态 ---------- */
+
+.empty {
+  padding: 100rpx 0;
+  text-align: center;
+  color: #9AA4A9;
+  font-size: 26rpx;
+}

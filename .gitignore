@@ -1,0 +1,16 @@
+# 依赖
+node_modules/
+miniprogram_npm/
+
+# 微信开发者工具的本机私有配置（含个人的编译模式等设置）
+project.private.config.json
+
+# 构建 / 校验 / 截图渲染的中间产物
+.tmp/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

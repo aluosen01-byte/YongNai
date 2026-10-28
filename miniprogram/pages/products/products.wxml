@@ -1,0 +1,96 @@
+<!--pages/products/products.wxml-->
+<view class="page">
+
+  <!-- 搜索 -->
+  <view class="search-wrap">
+    <view class="search-box">
+      <view class="search-glass"></view>
+      <input
+        class="search-input"
+        value="{{keyword}}"
+        placeholder="搜索型号 / 用途，如 SL-113、贴木皮"
+        placeholder-class="search-ph"
+        confirm-type="search"
+        bindinput="onSearch"
+      />
+      <view wx:if="{{keyword}}" class="search-clear" bindtap="clearSearch">✕</view>
+    </view>
+  </view>
+
+  <!-- 系列筛选 -->
+  <scroll-view class="chips" scroll-x scroll-with-animation>
+    <view class="chips-inner">
+      <view
+        class="chip {{active === item.id ? 'chip-on' : ''}}"
+        wx:for="{{chips}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="selectChip"
+      >
+        {{item.name}}<text class="chip-num">{{item.count}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 系列说明 -->
+  <view wx:if="{{seriesDesc}}" class="wrap">
+    <view class="series-desc">{{seriesDesc}}</view>
+  </view>
+
+  <!-- 结果计数 -->
+  <view class="wrap count-row">
+    <text class="count">共 {{total}} 个型号</text>
+    <text wx:if="{{keyword}}" class="count-key">“{{keyword}}”</text>
+  </view>
+
+  <!-- 列表 -->
+  <view class="wrap">
+    <view
+      class="item card"
+      wx:for="{{list}}"
+      wx:key="model"
+      data-model="{{item.model}}"
+      bindtap="openDetail"
+      hover-class="item-hover"
+    >
+      <view class="item-img-wrap">
+        <image class="item-img" src="{{item.image}}" mode="aspectFit" lazy-load />
+      </view>
+
+      <view class="item-body">
+        <view class="item-head">
+          <text class="item-model num">{{item.model}}</text>
+          <text class="tag tag-amber">{{item.seriesName}}</text>
+        </view>
+        <view class="item-name">{{item.name}}</view>
+        <view class="item-usage">{{item.usage}}</view>
+        <view class="item-foot">
+          <view wx:if="{{item.solid}}" class="item-meta">固含量 {{item.solid}}</view>
+          <view wx:if="{{item.wood}}" class="item-meta">适用 {{item.wood}}</view>
+          <view class="item-pack">{{item.packing}}</view>
+        </view>
+      </view>
+
+      <view class="arrow item-arrow"></view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{total === 0}}" class="empty">
+      <view class="empty-title">没有匹配的型号</view>
+      <view class="empty-desc">换个关键词，或按工况让选胶助手帮你选。</view>
+      <view class="empty-actions">
+        <view class="btn btn-line btn-sm" hover-class="btn-hover" bindtap="reset">清空条件</view>
+        <view class="btn btn-ink btn-sm empty-btn" hover-class="btn-hover" bindtap="goSelector">按工况选胶</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view wx:if="{{total > 0}}" class="wrap">
+    <view class="tip" bindtap="goSelector" hover-class="cell-hover">
+      <view class="tip-main">不知道选哪个型号？</view>
+      <view class="tip-sub">按基材与工序选胶，10 秒出结果 ›</view>
+    </view>
+  </view>
+
+</view>

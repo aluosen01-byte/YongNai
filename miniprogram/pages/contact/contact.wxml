@@ -1,0 +1,114 @@
+<!--pages/contact/contact.wxml-->
+<view class="page">
+
+  <!-- 头部 -->
+  <view class="head">
+    <view class="head-glow"></view>
+    <view class="head-inner">
+      <view class="head-micro">CONTACT US</view>
+      <view class="head-title">联系我们</view>
+      <view class="head-slogan">{{brand.slogan}}</view>
+      <view class="head-slogan-en">{{brand.sloganEn}}</view>
+
+      <view class="founder">
+        <view class="founder-avatar">罗</view>
+        <view class="founder-body">
+          <view class="founder-name">
+            {{contact.founder}}
+            <text class="founder-en">{{contact.founderEn}}</text>
+          </view>
+          <view class="founder-role">{{contact.role}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="wrap">
+    <view class="card rows">
+
+      <view class="row-item" hover-class="row-hover" bindtap="onCall">
+        <view class="row-main">
+          <text class="row-key">电话 / 微信</text>
+          <text class="row-val num">{{contact.phoneDisplay}}</text>
+        </view>
+        <view class="row-action" catchtap="copyPhone">复制</view>
+      </view>
+
+      <view class="hair"></view>
+
+      <view class="row-item" hover-class="row-hover" bindtap="copyEmail">
+        <view class="row-main">
+          <text class="row-key">邮箱 / 官网</text>
+          <text class="row-val">{{contact.email}}</text>
+        </view>
+        <view class="row-action" catchtap="copyEmail">复制</view>
+      </view>
+
+      <view class="hair"></view>
+
+      <view class="row-item" hover-class="row-hover" bindtap="copyAddress">
+        <view class="row-main">
+          <text class="row-key">公司地址</text>
+          <text class="row-val">{{contact.address}}</text>
+        </view>
+        <view class="row-action" catchtap="copyAddress">复制</view>
+      </view>
+
+      <view class="hair"></view>
+
+      <view class="row-item">
+        <view class="row-main">
+          <text class="row-key">公司名称</text>
+          <text class="row-val">{{brand.company}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 二维码 -->
+  <view class="wrap">
+    <view class="qr card">
+      <image class="qr-img" src="{{contact.qr}}" mode="aspectFit" bindtap="previewQr" />
+      <view class="qr-body">
+        <view class="qr-title">微信扫码 · 直接对接</view>
+        <view class="qr-desc">加微信可发样品照片、工艺参数与检测报告，也可让业务直接报价。</view>
+        <view class="qr-actions">
+          <view class="btn btn-line btn-sm qr-btn" hover-class="btn-hover" bindtap="saveQr">保存二维码</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作 -->
+  <view class="wrap">
+    <view class="actions">
+      <view class="btn btn-ink actions-btn actions-left" hover-class="btn-hover" bindtap="onCall">一键拨号</view>
+      <view class="btn btn-amber actions-btn" hover-class="btn-hover" bindtap="goSample">免费寄样</view>
+    </view>
+    <view class="actions-note">寄样与试胶不收费，运输方式按地区协商。</view>
+  </view>
+
+  <!-- 报价说明 -->
+  <view class="wrap">
+    <view class="quote">
+      <view class="quote-title">报价说明</view>
+      <view class="quote-text">{{quoteNote}}</view>
+      <view class="quote-text">标准型号按目录价直接下单；定制项确认包装、标签与配方后出具正式报价单。</view>
+    </view>
+  </view>
+
+  <!-- 页脚 -->
+  <view class="wrap">
+    <view class="footer">
+      <view class="footer-about" bindtap="goAbout" hover-class="row-hover">
+        <text class="footer-link">了解永耐的生产与资质</text>
+        <view class="arrow"></view>
+      </view>
+      <view class="footer-slogan">{{brand.slogan}}</view>
+      <view class="footer-slogan-en">{{brand.sloganEn}}</view>
+      <image class="footer-logo" src="/assets/brand/logo.png" mode="aspectFit" />
+    </view>
+  </view>
+
+</view>

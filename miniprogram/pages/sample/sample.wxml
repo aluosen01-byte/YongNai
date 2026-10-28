@@ -1,0 +1,247 @@
+<!--pages/sample/sample.wxml-->
+<view class="page">
+
+  <!-- 头部 -->
+  <view class="head">
+    <view class="head-micro">FREE SAMPLES · TRIAL</view>
+    <view class="head-title">免费寄样 · 四步试胶</view>
+    <view class="head-sub">样品由我们寄出，不需要你先寄基材；先做样块，再谈批量。</view>
+  </view>
+
+  <!-- 流程 -->
+  <view class="wrap">
+    <view class="steps card card-pad">
+      <view class="step">
+        <text class="step-no num">01</text>
+        <view class="step-body">
+          <view class="step-title">你告诉我们工况</view>
+          <view class="step-desc">基材、涂胶方式与验收标准</view>
+        </view>
+      </view>
+      <view class="step">
+        <text class="step-no num">02</text>
+        <view class="step-body">
+          <view class="step-title">我们寄样给你</view>
+          <view class="step-desc">按型号寄样品与技术资料</view>
+        </view>
+      </view>
+      <view class="step">
+        <text class="step-no num">03</text>
+        <view class="step-body">
+          <view class="step-title">你上机试胶</view>
+          <view class="step-desc">用你的基材与设备做样块</view>
+        </view>
+      </view>
+      <view class="step step-last">
+        <text class="step-no num">04</text>
+        <view class="step-body">
+          <view class="step-title">合格再谈批量</view>
+          <view class="step-desc">确认型号、价格与交期</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 表单 ===== -->
+  <block wx:if="{{!submitted}}">
+    <view class="wrap">
+
+      <view class="sec">
+        <view class="sec-head">
+          <view class="sec-bar"></view>
+          <text class="sec-title">联系信息</text>
+          <text class="sec-en">Contact</text>
+        </view>
+
+        <view class="card form">
+          <view class="field">
+            <text class="field-label">公司名称</text>
+            <input
+              class="field-input"
+              value="{{form.company}}"
+              data-field="company"
+              bindinput="onInput"
+              placeholder="选填，方便我们准备技术资料"
+              placeholder-class="field-ph"
+            />
+          </view>
+          <view class="hair"></view>
+
+          <view class="field">
+            <text class="field-label">联系人<text class="req">*</text></text>
+            <input
+              class="field-input"
+              value="{{form.name}}"
+              data-field="name"
+              bindinput="onInput"
+              placeholder="怎么称呼你"
+              placeholder-class="field-ph"
+            />
+          </view>
+          <view class="hair"></view>
+
+          <view class="field">
+            <text class="field-label">手机号<text class="req">*</text></text>
+            <input
+              class="field-input"
+              type="number"
+              maxlength="11"
+              value="{{form.phone}}"
+              data-field="phone"
+              bindinput="onInput"
+              placeholder="用于快递与回访"
+              placeholder-class="field-ph"
+            />
+          </view>
+          <view class="hair"></view>
+
+          <view class="field field-last">
+            <text class="field-label">所在地区</text>
+            <input
+              class="field-input"
+              value="{{form.region}}"
+              data-field="region"
+              bindinput="onInput"
+              placeholder="省 / 市，选填"
+              placeholder-class="field-ph"
+            />
+          </view>
+        </view>
+      </view>
+
+      <!-- 工况 -->
+      <view class="sec">
+        <view class="sec-head">
+          <view class="sec-bar"></view>
+          <text class="sec-title">工况信息</text>
+          <text class="sec-en">Application</text>
+        </view>
+        <view class="sec-sub">填得越细，我们寄的型号越准；不确定的可以留空。</view>
+
+        <view class="card card-pad block">
+          <view class="block-label">粘接基材</view>
+          <view class="opts">
+            <view
+              class="opt {{form.substrate === item ? 'opt-on' : ''}}"
+              wx:for="{{substrates}}"
+              wx:key="*this"
+              data-value="{{item}}"
+              bindtap="pickSubstrate"
+            >{{item}}</view>
+          </view>
+        </view>
+
+        <view class="card card-pad block">
+          <view class="block-label">涂胶方式</view>
+          <view class="opts">
+            <view
+              class="opt {{form.method === item ? 'opt-on' : ''}}"
+              wx:for="{{methods}}"
+              wx:key="*this"
+              data-value="{{item}}"
+              bindtap="pickMethod"
+            >{{item}}</view>
+          </view>
+        </view>
+
+        <view class="card card-pad block">
+          <view class="block-label">验收标准</view>
+          <view class="opts">
+            <view
+              class="opt {{form.acceptance === item ? 'opt-on' : ''}}"
+              wx:for="{{acceptances}}"
+              wx:key="*this"
+              data-value="{{item}}"
+              bindtap="pickAcceptance"
+            >{{item}}</view>
+          </view>
+        </view>
+
+        <view class="card form">
+          <view class="field">
+            <text class="field-label">关注型号</text>
+            <input
+              class="field-input"
+              value="{{form.model}}"
+              data-field="model"
+              bindinput="onInput"
+              placeholder="如 SL-113，可留空由我们推荐"
+              placeholder-class="field-ph"
+            />
+          </view>
+          <view class="hair"></view>
+          <view class="field field-last field-top">
+            <text class="field-label">补充说明</text>
+            <textarea
+              class="field-textarea"
+              value="{{form.remark}}"
+              data-field="remark"
+              bindinput="onInput"
+              placeholder="基材的特殊性、产线节拍、目前用的胶种与问题…"
+              placeholder-class="field-ph"
+              maxlength="300"
+              auto-height="{{true}}"
+            />
+          </view>
+        </view>
+      </view>
+
+      <view class="submit-area">
+        <view class="btn btn-amber {{submitting ? 'btn-disabled' : ''}}" hover-class="btn-hover" bindtap="submit">
+          {{submitting ? '提交中…' : '提交寄样申请'}}
+        </view>
+        <view class="submit-note">寄样与试胶不收费，运输方式按地区协商。</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- ===== 提交完成 ===== -->
+  <block wx:if="{{submitted}}">
+    <view class="wrap">
+      <view class="done card">
+        <view class="done-badge">✓</view>
+        <view class="done-title">已收到你的寄样申请</view>
+        <view class="done-desc">我们会按你填写的基材与验收标准配型号，寄样前会先电话确认地址。</view>
+
+        <view class="done-info">
+          <view class="done-row">
+            <text class="done-key">联系人</text>
+            <text class="done-val">{{form.name}}</text>
+          </view>
+          <view class="done-row">
+            <text class="done-key">手机号</text>
+            <text class="done-val">{{form.phone}}</text>
+          </view>
+          <view wx:if="{{form.model}}" class="done-row">
+            <text class="done-key">关注型号</text>
+            <text class="done-val">{{form.model}}</text>
+          </view>
+          <view wx:if="{{form.substrate}}" class="done-row">
+            <text class="done-key">基材</text>
+            <text class="done-val">{{form.substrate}}</text>
+          </view>
+          <view wx:if="{{form.acceptance}}" class="done-row">
+            <text class="done-key">验收标准</text>
+            <text class="done-val">{{form.acceptance}}</text>
+          </view>
+          <view class="done-row">
+            <text class="done-key">提交时间</text>
+            <text class="done-val num">{{recordTime}}</text>
+          </view>
+        </view>
+
+        <view class="done-actions">
+          <view class="btn btn-ink done-btn done-btn-left" hover-class="btn-hover" bindtap="callSales">直接电话联系</view>
+          <view class="btn btn-line done-btn" hover-class="btn-hover" bindtap="resetForm">再填一份</view>
+        </view>
+
+        <view class="done-back" bindtap="goHome">‹ 返回首页</view>
+      </view>
+
+      <view wx:if="{{!hasBackend}}" class="done-hint">
+        当前为体验版：申请已保存在本机，接入后台后会自动提交到服务器。
+      </view>
+    </view>
+  </block>
+
+</view>

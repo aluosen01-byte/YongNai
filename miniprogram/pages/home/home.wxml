@@ -1,0 +1,198 @@
+<!--pages/home/home.wxml-->
+<view class="page">
+
+  <!-- ===== 主视觉 ===== -->
+  <view class="hero">
+    <view class="hero-glow"></view>
+    <view class="hero-ring"></view>
+
+    <view class="hero-inner">
+      <view class="brand-plaque">
+        <image class="brand-logo" src="/assets/brand/logo.png" mode="aspectFit" />
+      </view>
+
+      <view class="hero-slogan">一次接触　永不分离</view>
+      <view class="hero-en">ONCE CONTACT, NEVER SEPARATE</view>
+      <view class="hero-desc">
+        <view>水性环保胶粘剂 · 自有产线 4,000 ㎡</view>
+        <view>九大系列 · 十七个在售型号 · 20–1200 kg 全规格</view>
+      </view>
+
+      <view class="hero-actions">
+        <view class="btn btn-amber hero-btn hero-btn-left" hover-class="btn-hover" bindtap="goSample">免费寄样</view>
+        <view class="btn btn-ghost hero-btn" hover-class="btn-hover" bindtap="goSelector">选胶助手</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 产能数据 ===== -->
+  <view class="wrap">
+    <view class="stats card">
+      <view class="stat" wx:for="{{stats}}" wx:key="label">
+        <view class="stat-value">
+          <text class="num">{{item.value}}</text><text class="stat-unit">{{item.unit}}</text>
+        </view>
+        <view class="stat-label">{{item.label}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 快捷入口 ===== -->
+  <view class="wrap">
+    <view class="quick card">
+      <view
+        class="quick-item"
+        wx:for="{{quick}}"
+        wx:key="text"
+        data-nav="{{item.nav}}"
+        bindtap="onQuick"
+        hover-class="quick-hover"
+      >
+        <image class="quick-icon" src="{{item.icon}}" mode="aspectFit" />
+        <text class="quick-text">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 六大优势 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">六大优势</text>
+      <text class="sec-en">Advantages</text>
+    </view>
+    <view class="sec-sub">胶水是看不见效果的产品，我们把选型标准、验收口径与样品都放在前面。</view>
+
+    <view class="adv card">
+      <view
+        class="adv-item {{index === advantages.length - 1 ? 'adv-item-last' : ''}}"
+        wx:for="{{advantages}}"
+        wx:key="no"
+      >
+        <text class="adv-no num">{{item.no}}</text>
+        <view class="adv-body">
+          <view class="adv-title">{{item.title}}</view>
+          <view class="adv-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 产品系列 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">产品系列</text>
+      <text class="sec-en">Series</text>
+      <text class="sec-more" bindtap="goSelector">按工况选胶 ›</text>
+    </view>
+
+    <view class="series-grid">
+      <view
+        class="series-cell"
+        wx:for="{{seriesList}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="openSeries"
+        hover-class="cell-hover"
+      >
+        <view class="series-name">{{item.name}}</view>
+        <view class="series-en">{{item.en}}</view>
+        <view class="series-models">{{item.count}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 主推型号 ===== -->
+  <view class="sec">
+    <view class="wrap">
+      <view class="sec-head">
+        <view class="sec-bar"></view>
+        <text class="sec-title">常用型号</text>
+        <text class="sec-en">Popular</text>
+      </view>
+    </view>
+
+    <scroll-view class="hscroll" scroll-x scroll-with-animation>
+      <view class="hscroll-inner">
+        <view
+          class="prod-card"
+          wx:for="{{featured}}"
+          wx:key="model"
+          data-model="{{item.model}}"
+          bindtap="openProduct"
+          hover-class="cell-hover"
+        >
+          <view class="prod-img-wrap">
+            <image class="prod-img" src="{{item.image}}" mode="aspectFit" />
+          </view>
+          <view class="prod-model num">{{item.model}}</view>
+          <view class="prod-name">{{item.name}}</view>
+          <view class="prod-usage">{{item.usage}}</view>
+          <view class="prod-pack">{{item.packing}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- ===== 寄样流程 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">免费寄样 · 四步试胶</text>
+      <text class="sec-en">Sampling</text>
+    </view>
+
+    <view class="flow card card-pad">
+      <view
+        class="flow-item {{index === sampleSteps.length - 1 ? 'flow-item-last' : ''}}"
+        wx:for="{{sampleSteps}}"
+        wx:key="no"
+      >
+        <view class="flow-no num">{{item.no}}</view>
+        <view class="flow-body">
+          <view class="flow-title">{{item.title}}</view>
+          <view class="flow-desc">{{item.desc}}</view>
+        </view>
+      </view>
+      <view class="btn btn-ink flow-btn" hover-class="btn-hover" bindtap="goSample">立即申请寄样</view>
+      <view class="flow-note">寄样与试胶不收费，运输方式按地区协商。</view>
+    </view>
+  </view>
+
+  <!-- ===== 资质 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">资质与认证</text>
+      <text class="sec-en">Certified</text>
+      <text class="sec-more" bindtap="goAbout">了解永耐 ›</text>
+    </view>
+
+    <view class="cert-grid">
+      <view class="cert-cell" wx:for="{{certs}}" wx:key="id" bindtap="goAbout" hover-class="cell-hover">
+        <image class="cert-img" src="{{item.image}}" mode="aspectFit" />
+        <view class="cert-title">{{item.title}}</view>
+        <view class="cert-en">{{item.en}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 联系 ===== -->
+  <view class="sec wrap">
+    <view class="cta">
+      <view class="cta-glow"></view>
+      <view class="cta-micro">ONCE CONTACT</view>
+      <view class="cta-title">
+        <view>先用你的基材试，</view>
+        <view>再谈价格与批量</view>
+      </view>
+      <view class="cta-desc">水性体系，非易燃易爆；可按需提供产品检测报告。</view>
+      <view class="cta-actions">
+        <view class="btn btn-amber cta-btn cta-btn-left" hover-class="btn-hover" bindtap="goSample">申请寄样</view>
+        <view class="btn btn-ghost cta-btn" hover-class="btn-hover" bindtap="callSales">电话咨询</view>
+      </view>
+    </view>
+  </view>
+
+</view>

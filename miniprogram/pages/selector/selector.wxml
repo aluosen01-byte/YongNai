@@ -1,0 +1,186 @@
+<!--pages/selector/selector.wxml-->
+<view class="page">
+
+  <!-- 头部 -->
+  <view class="head">
+    <view class="head-title">选胶助手</view>
+    <view class="head-sub">先看基材与工况，再定胶种与型号，最后用样块确认。</view>
+
+    <view class="stepper">
+      <view class="stepper-item" data-step="1" bindtap="editStep">
+        <view class="dot {{step >= 1 ? 'dot-on' : ''}}">1</view>
+        <text class="dot-label {{step >= 1 ? 'dot-label-on' : ''}}">工况</text>
+      </view>
+      <view class="line {{step >= 2 ? 'line-on' : ''}}"></view>
+      <view class="stepper-item" data-step="2" bindtap="editStep">
+        <view class="dot {{step >= 2 ? 'dot-on' : ''}}">2</view>
+        <text class="dot-label {{step >= 2 ? 'dot-label-on' : ''}}">涂胶方式</text>
+      </view>
+      <view class="line {{step >= 3 ? 'line-on' : ''}}"></view>
+      <view class="stepper-item">
+        <view class="dot {{step >= 3 ? 'dot-on' : ''}}">3</view>
+        <text class="dot-label {{step >= 3 ? 'dot-label-on' : ''}}">推荐型号</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 第一步：工况 ===== -->
+  <block wx:if="{{step === 1}}">
+    <view class="wrap">
+      <view class="step-title">你粘的是什么、在什么工序上？</view>
+      <view class="step-desc">选出最接近的一项，我们按对应的木种与工艺给型号。</view>
+
+      <view class="grid">
+        <view
+          class="cell"
+          wx:for="{{scenarios}}"
+          wx:key="id"
+          data-index="{{index}}"
+          bindtap="chooseScenario"
+          hover-class="cell-hover"
+        >
+          <view class="cell-title">{{item.title}}</view>
+          <view class="cell-en">{{item.en}}</view>
+          <view class="cell-hint">{{item.hint}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- ===== 第二步：涂胶方式 ===== -->
+  <block wx:if="{{step === 2}}">
+    <view class="wrap">
+      <view class="step-title">你打算怎么涂胶？</view>
+      <view class="step-desc">涂胶方式决定用胶量与效率，也会影响胶合强度的稳定性。</view>
+
+      <view
+        class="method card"
+        wx:for="{{methods}}"
+        wx:key="id"
+        data-index="{{index}}"
+        bindtap="chooseMethod"
+        hover-class="cell-hover"
+      >
+        <view class="method-head">
+          <view class="method-name">{{item.name}}</view>
+          <view class="method-en">{{item.en}}</view>
+        </view>
+        <view class="method-rows">
+          <view class="method-row">
+            <text class="method-key">涂胶均匀性</text>
+            <text class="method-val">{{item.uniformity}}</text>
+          </view>
+          <view class="method-row">
+            <text class="method-key">用胶量</text>
+            <text class="method-val">{{item.consumption}}</text>
+          </view>
+          <view class="method-row">
+            <text class="method-key">效率与投入</text>
+            <text class="method-val">{{item.efficiency}}</text>
+          </view>
+          <view class="method-row">
+            <text class="method-key">适用场景</text>
+            <text class="method-val">{{item.scope}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="back-link" bindtap="back">‹ 返回上一步</view>
+    </view>
+  </block>
+
+  <!-- ===== 第三步：推荐 ===== -->
+  <block wx:if="{{step === 3 && primary}}">
+    <view class="wrap">
+
+      <!-- 已选摘要 -->
+      <view class="summary">
+        <view class="summary-item">
+          <text class="summary-key">工况</text>
+          <text class="summary-val">{{scenario.title}}</text>
+        </view>
+        <view class="summary-item">
+          <text class="summary-key">涂胶</text>
+          <text class="summary-val">{{method.name}}</text>
+        </view>
+      </view>
+
+      <!-- 推荐主型号 -->
+      <view class="rec card" bindtap="openProduct" data-model="{{primary.model}}" hover-class="cell-hover">
+        <view class="rec-label">推荐型号</view>
+        <view class="rec-main">
+          <view class="rec-img-wrap">
+            <image class="rec-img" src="{{primary.image}}" mode="aspectFit" />
+          </view>
+          <view class="rec-body">
+            <view class="rec-model num">{{primary.model}}</view>
+            <view class="rec-name">{{primary.name}}</view>
+            <view class="rec-chips">
+              <text class="tag tag-amber">{{primary.seriesName}}</text>
+              <text class="tag">{{primary.packing}}</text>
+            </view>
+          </view>
+          <view class="arrow"></view>
+        </view>
+        <view class="rec-reason">{{scenario.reason}}</view>
+        <view wx:if="{{scenario.note}}" class="rec-note">· {{scenario.note}}</view>
+      </view>
+
+      <!-- 备选 -->
+      <block wx:if="{{alternatives.length}}">
+        <view class="alt-title">备选型号</view>
+        <view class="alt-list card">
+          <view
+            class="alt-row"
+            wx:for="{{alternatives}}"
+            wx:key="model"
+            data-model="{{item.model}}"
+            bindtap="openProduct"
+            hover-class="cell-hover"
+          >
+            <image class="alt-img" src="{{item.image}}" mode="aspectFit" />
+            <view class="alt-body">
+              <view class="alt-model num">{{item.model}}</view>
+              <view class="alt-usage">{{item.usage}}</view>
+            </view>
+            <view class="alt-pack">{{item.packing}}</view>
+          </view>
+        </view>
+      </block>
+
+      <!-- 施胶建议 -->
+      <view class="advice card card-pad">
+        <view class="advice-title">施胶建议 · {{method.name}}</view>
+        <view class="advice-row">
+          <text class="advice-key">均匀性</text>
+          <text class="advice-val">{{method.uniformity}}</text>
+        </view>
+        <view class="advice-row">
+          <text class="advice-key">用胶量</text>
+          <text class="advice-val">{{method.consumption}}</text>
+        </view>
+        <view class="advice-row">
+          <text class="advice-key">适用</text>
+          <text class="advice-val">{{method.scope}}</text>
+        </view>
+        <view class="advice-tip">{{coatingNote}}</view>
+      </view>
+
+      <!-- 验收 -->
+      <view class="accept card card-pad">
+        <view class="accept-title">验收口径</view>
+        <view class="accept-text">{{acceptanceNote}}</view>
+        <view class="accept-text">寄样与试胶不收费，运输方式按地区协商。</view>
+      </view>
+
+      <!-- 操作 -->
+      <view class="actions">
+        <view class="btn btn-ink actions-btn actions-left" hover-class="btn-hover" bindtap="goSample">按此型号申请寄样</view>
+        <view class="btn btn-line actions-btn actions-right" hover-class="btn-hover" bindtap="restart">重新选择</view>
+      </view>
+
+      <view class="disclaimer">推荐结果基于宣传册的选型口径，实际型号请以样块确认后的工艺卡为准。</view>
+    </view>
+  </block>
+
+</view>

@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/products/products",
+    "pages/selector/selector",
+    "pages/contact/contact",
+    "pages/detail/detail",
+    "pages/sample/sample",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1F3A44",
+    "navigationBarTitleText": "永耐胶水",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F4F1EA",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8C979D",
+    "selectedColor": "#1F3A44",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "assets/icon/home.png",
+        "selectedIconPath": "assets/icon/home-active.png"
+      },
+      {
+        "pagePath": "pages/products/products",
+        "text": "产品",
+        "iconPath": "assets/icon/products.png",
+        "selectedIconPath": "assets/icon/products-active.png"
+      },
+      {
+        "pagePath": "pages/selector/selector",
+        "text": "选胶",
+        "iconPath": "assets/icon/selector.png",
+        "selectedIconPath": "assets/icon/selector-active.png"
+      },
+      {
+        "pagePath": "pages/contact/contact",
+        "text": "联系",
+        "iconPath": "assets/icon/contact.png",
+        "selectedIconPath": "assets/icon/contact-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

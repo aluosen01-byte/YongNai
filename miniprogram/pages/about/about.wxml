@@ -1,0 +1,210 @@
+<!--pages/about/about.wxml-->
+<view class="page">
+
+  <!-- 头部 -->
+  <view class="head">
+    <view class="head-micro">ABOUT YONGNAI</view>
+    <view class="head-title">关于永耐</view>
+    <view class="head-sub">
+      <view>东莞市永耐环保科技有限公司</view>
+      <view>专注水性胶粘剂的生产与销售</view>
+    </view>
+  </view>
+
+  <!-- ===== 公司简介 ===== -->
+  <view class="wrap">
+    <view class="intro card card-pad">
+      <image class="about-logo" src="/assets/brand/logo.png" mode="aspectFit" />
+      <view class="sec-head intro-head">
+        <view class="sec-bar"></view>
+        <text class="sec-title">公司简介</text>
+        <text class="sec-en">Profile</text>
+      </view>
+      <view class="para" wx:for="{{intro.paragraphs}}" wx:key="*this">{{item}}</view>
+
+      <view class="photo-row">
+        <image
+          class="photo"
+          wx:for="{{factoryImages}}"
+          wx:key="*this"
+          src="{{item}}"
+          mode="aspectFill"
+          data-index="{{index}}"
+          bindtap="previewFactory"
+          lazy-load
+        />
+      </view>
+      <view class="photo-note">厂房、仓库与灌装现场</view>
+    </view>
+  </view>
+
+  <!-- ===== 产能 ===== -->
+  <view class="wrap">
+    <view class="stats card">
+      <view class="stat" wx:for="{{stats}}" wx:key="label">
+        <view class="stat-value">
+          <text class="num">{{item.value}}</text><text class="stat-unit">{{item.unit}}</text>
+        </view>
+        <view class="stat-label">{{item.label}}</view>
+        <view class="stat-en">{{item.en}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 生产流程 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">生产流程</text>
+      <text class="sec-en">Process</text>
+    </view>
+
+    <view class="timeline card card-pad">
+      <view class="tl-item {{index === steps.length - 1 ? 'tl-last' : ''}}" wx:for="{{steps}}" wx:key="no">
+        <view class="tl-left">
+          <view class="tl-dot num">{{item.no}}</view>
+          <view wx:if="{{index !== steps.length - 1}}" class="tl-line"></view>
+        </view>
+        <view class="tl-body">
+          <view class="tl-title">{{item.title}}</view>
+          <view class="tl-en">{{item.en}}</view>
+          <view class="tl-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="note">{{productionNote}}</view>
+  </view>
+
+  <!-- ===== 资质 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">资质与认证</text>
+      <text class="sec-en">Certified</text>
+    </view>
+    <view class="sec-sub">点击可查看证书原图。</view>
+
+    <view class="cert-grid">
+      <view
+        class="cert-cell card"
+        wx:for="{{certs}}"
+        wx:key="id"
+        data-index="{{index}}"
+        bindtap="previewCert"
+        hover-class="cell-hover"
+      >
+        <image class="cert-img" src="{{item.image}}" mode="aspectFit" lazy-load />
+        <view class="cert-title">{{item.title}}</view>
+        <view class="cert-en">{{item.en}}</view>
+        <view class="cert-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 专利 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">发明专利</text>
+      <text class="sec-en">Patents</text>
+      <text class="sec-more">七项授权</text>
+    </view>
+
+    <view class="patent card card-pad">
+      <view class="patent-item" wx:for="{{patents}}" wx:key="*this">
+        <text class="patent-no num">{{index + 1}}</text>
+        <text class="patent-text">{{item}}</text>
+      </view>
+    </view>
+    <view class="note">{{patentNote}}</view>
+  </view>
+
+  <!-- ===== 案例 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">集团工程案例</text>
+      <text class="sec-en">Projects</text>
+    </view>
+
+    <view
+      class="case card"
+      wx:for="{{cases}}"
+      wx:key="id"
+      data-index="{{index}}"
+      bindtap="previewCase"
+      hover-class="cell-hover"
+    >
+      <image class="case-img" src="{{item.image}}" mode="aspectFill" lazy-load />
+      <view class="case-body">
+        <view class="case-loc">{{item.location}}</view>
+        <view class="case-title">{{item.title}}</view>
+        <view class="case-en">{{item.en}}</view>
+        <view class="case-detail">{{item.detail}}</view>
+      </view>
+    </view>
+    <view class="note">{{caseNote}}</view>
+  </view>
+
+  <!-- ===== 政策 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">政策导向</text>
+      <text class="sec-en">Policy</text>
+    </view>
+
+    <view class="policy card">
+      <view class="policy-item" wx:for="{{policies}}" wx:key="no">
+        <text class="policy-no num">{{item.no}}</text>
+        <view class="policy-body">
+          <view class="policy-title">{{item.title}}</view>
+          <view class="policy-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="voc card card-pad">
+      <view class="voc-title">VOCs 减排政策</view>
+      <view class="voc-item" wx:for="{{vocPoints}}" wx:key="no">
+        <view class="voc-dot"></view>
+        <view class="voc-body">
+          <view class="voc-name">{{item.title}}</view>
+          <view class="voc-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="policy-note">{{policyNote}}</view>
+    <view class="disclaimer">{{policyDisclaimer}}</view>
+  </view>
+
+  <!-- ===== 定制 ===== -->
+  <view class="sec wrap">
+    <view class="sec-head">
+      <view class="sec-bar"></view>
+      <text class="sec-title">定制与贴牌</text>
+      <text class="sec-en">OEM</text>
+    </view>
+
+    <view class="custom card">
+      <view class="custom-item" wx:for="{{custom}}" wx:key="id">
+        <view class="custom-head">
+          <text class="custom-title">{{item.title}}</text>
+          <text class="custom-en">{{item.en}}</text>
+        </view>
+        <view class="custom-desc">{{item.desc}}</view>
+      </view>
+    </view>
+    <view class="note">{{customNote}}</view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="wrap">
+    <view class="actions">
+      <view class="btn btn-ink actions-btn actions-left" hover-class="btn-hover" bindtap="goSample">申请寄样</view>
+      <view class="btn btn-line actions-btn" hover-class="btn-hover" bindtap="goContact">联系方式</view>
+    </view>
+  </view>
+
+</view>

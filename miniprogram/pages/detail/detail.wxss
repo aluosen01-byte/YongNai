@@ -1,0 +1,270 @@
+/* pages/detail/detail.wxss */
+
+/* ---------- 产品主图 ---------- */
+
+.hero {
+  position: relative;
+  padding: 40rpx 0 44rpx;
+  background: linear-gradient(180deg, #EDE7DA 0%, #F4F1EA 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 420rpx;
+  height: 420rpx;
+  margin: -210rpx 0 0 -210rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 68%);
+}
+
+.hero-img {
+  position: relative;
+  width: 440rpx;
+  height: 440rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  box-shadow: 0 12rpx 36rpx rgba(31, 58, 68, 0.07);
+}
+
+.hero-badge {
+  position: absolute;
+  left: 32rpx;
+  bottom: 32rpx;
+  padding: 8rpx 18rpx;
+  background: rgba(31, 58, 68, 0.86);
+  color: #FFFFFF;
+  font-size: 20rpx;
+  border-radius: 6rpx;
+  letter-spacing: 1rpx;
+}
+
+/* ---------- 标题 ---------- */
+
+.title-block {
+  margin-top: 34rpx;
+}
+
+.title-model {
+  font-size: 56rpx;
+  font-weight: 800;
+  color: #1F3A44;
+  letter-spacing: 1rpx;
+  line-height: 1.2;
+}
+
+.title-name {
+  margin-top: 6rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #43535A;
+}
+
+.title-usage {
+  margin-top: 12rpx;
+  font-size: 25rpx;
+  color: #77817F;
+  line-height: 1.6;
+}
+
+.title-chips {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+
+.title-chips .tag {
+  margin-right: 12rpx;
+  margin-bottom: 10rpx;
+}
+
+/* ---------- 规格表 ---------- */
+
+.spec {
+  padding: 8rpx 28rpx;
+}
+
+.spec-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #F1ECE2;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  width: 180rpx;
+  flex: none;
+  font-size: 24rpx;
+  color: #8C979D;
+}
+
+.spec-value {
+  flex: 1;
+  font-size: 26rpx;
+  color: #1F3A44;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+/* ---------- 特点 ---------- */
+
+.point {
+  display: flex;
+  align-items: flex-start;
+  padding: 10rpx 0;
+}
+
+.point-dot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #F0A22E;
+  flex: none;
+  margin-top: 15rpx;
+  margin-right: 16rpx;
+}
+
+.point-text {
+  flex: 1;
+  font-size: 25rpx;
+  color: #43535A;
+  line-height: 1.7;
+}
+
+/* ---------- 施工与验收 ---------- */
+
+.note-row {
+  padding: 18rpx 0;
+}
+
+.note-key {
+  display: block;
+  font-size: 21rpx;
+  color: #A56C06;
+  letter-spacing: 1rpx;
+  margin-bottom: 6rpx;
+}
+
+.note-val {
+  font-size: 25rpx;
+  color: #43535A;
+  line-height: 1.7;
+}
+
+/* ---------- 相关型号 ---------- */
+
+.rel {
+  padding: 6rpx 28rpx;
+}
+
+.rel-row {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid #F1ECE2;
+}
+
+.rel-row:last-child {
+  border-bottom: none;
+}
+
+.rel-hover {
+  opacity: 0.7;
+}
+
+.rel-img {
+  width: 104rpx;
+  height: 104rpx;
+  flex: none;
+  background: #FBFAF7;
+  border-radius: 12rpx;
+}
+
+.rel-body {
+  flex: 1;
+  margin-left: 20rpx;
+  min-width: 0;
+}
+
+.rel-model {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #1F3A44;
+}
+
+.rel-name {
+  font-size: 22rpx;
+  color: #77817F;
+  margin-top: 2rpx;
+}
+
+.rel-usage {
+  font-size: 20rpx;
+  color: #9AA4A9;
+  margin-top: 4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- 页脚 ---------- */
+
+.note-foot {
+  margin-top: 40rpx;
+  font-size: 20rpx;
+  color: #A8B0B4;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ---------- 底部条 ---------- */
+
+.bar-secondary {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.bar-secondary-title {
+  font-size: 25rpx;
+  font-weight: 600;
+  color: #1F3A44;
+}
+
+.bar-secondary-sub {
+  font-size: 19rpx;
+  color: #9AA4A9;
+  margin-top: 2rpx;
+}
+
+.bar-primary {
+  width: 300rpx;
+  flex: none;
+}
+
+/* ---------- 空状态 ---------- */
+
+.empty-title {
+  font-size: 28rpx;
+  color: #43535A;
+  font-weight: 600;
+}
+
+.empty-desc {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #9AA4A9;
+}
+
+.empty-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 28rpx;
+}
