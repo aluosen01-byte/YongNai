@@ -1,13 +1,14 @@
 <!--pages/home/home.wxml-->
 <view class="page">
 
-  <!-- ===== 主视觉 ===== -->
+  <!-- ===== 主视觉（参考贝之然首页：白底首屏 + 细线分隔） ===== -->
   <view class="hero">
     <view class="hero-glow"></view>
-    <view class="hero-ring"></view>
 
     <view class="hero-inner">
-      <view class="brand-plaque">
+      <text class="hero-kicker">YONGNAI ADHESIVE · 水性环保胶粘剂</text>
+
+      <view class="brand-row">
         <image class="brand-logo" src="/assets/brand/logo.png" mode="aspectFit" />
       </view>
 
@@ -19,8 +20,8 @@
       </view>
 
       <view class="hero-actions">
-        <view class="btn btn-amber hero-btn hero-btn-left" hover-class="btn-hover" bindtap="goSample">免费寄样</view>
-        <view class="btn btn-ghost hero-btn" hover-class="btn-hover" bindtap="goSelector">选胶助手</view>
+        <view class="btn btn-ink hero-btn hero-btn-left" hover-class="btn-hover" bindtap="goSample">免费寄样</view>
+        <view class="btn btn-line hero-btn" hover-class="btn-hover" bindtap="goSelector">选胶助手</view>
       </view>
     </view>
   </view>
@@ -63,17 +64,11 @@
     </view>
     <view class="sec-sub">胶水是看不见效果的产品，我们把选型标准、验收口径与样品都放在前面。</view>
 
-    <view class="adv card">
-      <view
-        class="adv-item {{index === advantages.length - 1 ? 'adv-item-last' : ''}}"
-        wx:for="{{advantages}}"
-        wx:key="no"
-      >
+    <view class="adv-grid">
+      <view class="adv-cell" wx:for="{{advantages}}" wx:key="no">
         <text class="adv-no num">{{item.no}}</text>
-        <view class="adv-body">
-          <view class="adv-title">{{item.title}}</view>
-          <view class="adv-desc">{{item.desc}}</view>
-        </view>
+        <view class="adv-title">{{item.title}}</view>
+        <view class="adv-desc">{{item.desc}}</view>
       </view>
     </view>
   </view>

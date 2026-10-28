@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "永耐胶水",
-  "navigationBarBackgroundColor": "#244754",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarTextStyle": "black",
   "enablePullDownRefresh": false
 }

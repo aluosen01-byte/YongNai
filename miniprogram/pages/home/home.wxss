@@ -1,32 +1,23 @@
 /* pages/home/home.wxss */
 
-/* ---------- 主视觉 ---------- */
+/* ---------- 主视觉（白底首屏，参考贝之然首页） ---------- */
 
 .hero {
   position: relative;
-  padding: 36rpx 32rpx 124rpx;
-  background: linear-gradient(158deg, #244754 0%, #1B3540 46%, #102329 100%);
+  padding: 0 32rpx 48rpx;
+  background: #FFFFFF;
+  border-bottom: 1rpx solid #D8D2C6;
   overflow: hidden;
 }
 
 .hero-glow {
   position: absolute;
-  right: -150rpx;
+  right: -160rpx;
   top: -170rpx;
-  width: 560rpx;
-  height: 560rpx;
+  width: 520rpx;
+  height: 520rpx;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(240, 162, 46, 0.26) 0%, rgba(240, 162, 46, 0) 68%);
-}
-
-.hero-ring {
-  position: absolute;
-  right: -60rpx;
-  bottom: -180rpx;
-  width: 440rpx;
-  height: 440rpx;
-  border-radius: 50%;
-  border: 2rpx solid rgba(255, 255, 255, 0.07);
+  background: radial-gradient(circle, rgba(240, 162, 46, 0.12) 0%, rgba(240, 162, 46, 0) 68%);
 }
 
 .hero-inner {
@@ -34,47 +25,51 @@
   z-index: 2;
 }
 
-.brand-plaque {
-  display: inline-block;
-  padding: 18rpx 22rpx;
-  background: #FFFFFF;
-  border-radius: 18rpx;
-  box-shadow: 0 12rpx 32rpx rgba(0, 0, 0, 0.22);
+.hero-kicker {
+  display: block;
+  padding-top: 30rpx;
+  font-size: 20rpx;
+  letter-spacing: 3rpx;
+  color: #2F6FB2;
+}
+
+.brand-row {
+  margin-top: 26rpx;
 }
 
 .brand-logo {
   display: block;
-  width: 262rpx;
-  height: 148rpx;
+  width: 296rpx;
+  height: 168rpx;
 }
 
 .hero-slogan {
-  margin-top: 52rpx;
+  margin-top: 34rpx;
   font-size: 52rpx;
-  font-weight: 800;
-  color: #FFFFFF;
-  letter-spacing: 5rpx;
-  line-height: 1.3;
+  font-weight: 700;
+  color: #F0A22E;
+  letter-spacing: 3rpx;
+  line-height: 1.28;
 }
 
 .hero-en {
-  margin-top: 14rpx;
+  margin-top: 10rpx;
   font-size: 19rpx;
   font-weight: 600;
-  color: #F0A22E;
-  letter-spacing: 3.4rpx;
+  color: #5C666B;
+  letter-spacing: 3rpx;
 }
 
 .hero-desc {
-  margin-top: 26rpx;
+  margin-top: 24rpx;
   font-size: 24rpx;
-  color: rgba(255, 255, 255, 0.62);
-  line-height: 1.8;
+  color: #1D2226;
+  line-height: 1.75;
 }
 
 .hero-actions {
   display: flex;
-  margin-top: 42rpx;
+  margin-top: 36rpx;
 }
 
 .hero-btn {
@@ -91,7 +86,7 @@
   position: relative;
   z-index: 3;
   display: flex;
-  margin-top: -84rpx;
+  margin-top: 28rpx;
   padding: 30rpx 6rpx;
 }
 
@@ -165,39 +160,40 @@
   letter-spacing: 0.5rpx;
 }
 
-/* ---------- 六大优势 ---------- */
+/* ---------- 六大优势（双列） ---------- */
 
-.adv {
-  margin-top: 28rpx;
-  padding: 8rpx 32rpx;
-}
-
-.adv-item {
+.adv-grid {
   display: flex;
-  padding: 28rpx 0;
-  border-bottom: 1rpx solid #F1ECE2;
+  flex-wrap: wrap;
+  margin-top: 28rpx;
 }
 
-.adv-item-last {
-  border-bottom: none;
+.adv-cell {
+  width: calc((100% - 16rpx) / 2);
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+  padding: 26rpx 24rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  box-shadow: 0 6rpx 20rpx rgba(31, 58, 68, 0.04);
+}
+
+.adv-cell:nth-child(2n) {
+  margin-right: 0;
 }
 
 .adv-no {
-  width: 66rpx;
-  flex: none;
-  font-size: 26rpx;
+  display: block;
+  font-size: 24rpx;
   font-weight: 800;
   color: #E0C99A;
   letter-spacing: 1rpx;
-  line-height: 1.4;
-}
-
-.adv-body {
-  flex: 1;
+  line-height: 1.2;
 }
 
 .adv-title {
-  font-size: 29rpx;
+  margin-top: 10rpx;
+  font-size: 27rpx;
   font-weight: 700;
   color: #1F3A44;
   line-height: 1.4;
@@ -205,7 +201,7 @@
 
 .adv-desc {
   margin-top: 8rpx;
-  font-size: 24rpx;
+  font-size: 21rpx;
   color: #6E777C;
   line-height: 1.65;
 }
