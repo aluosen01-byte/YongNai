@@ -1,4 +1,6 @@
 import { PRODUCTS, SERIES, Product } from '../../data/products'
+import { SHARE_COVER } from '../../config'
+import { enableShare, goTab } from '../../utils/util'
 
 interface Chip {
   id: string
@@ -17,6 +19,7 @@ Page({
   },
 
   onLoad() {
+    enableShare()
     const chips: Chip[] = [{ id: 'all', name: '全部', count: PRODUCTS.length }].concat(
       SERIES.map((item) => ({
         id: item.id,
@@ -90,10 +93,22 @@ Page({
   },
 
   goSelector() {
-    wx.switchTab({ url: '/pages/selector/selector' })
+    goTab('/pages/selector/selector')
   },
 
   onShareAppMessage() {
-    return { title: '永耐胶水 · 产品中心（九大系列 / 十七个型号）', path: '/pages/products/products' }
+    return {
+      title: '永耐胶水 · 产品中心（九大系列 / 十七个型号）',
+      path: '/pages/products/products',
+      imageUrl: SHARE_COVER,
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '永耐胶水 · 九大系列 17 个在售型号，按木种与工序选型',
+      query: '',
+      imageUrl: SHARE_COVER,
+    }
   },
 })

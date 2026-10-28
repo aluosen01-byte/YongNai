@@ -1,11 +1,16 @@
 import { BRAND, CONTACT, QUOTE_NOTE } from '../../data/company'
-import { callPhone, copyText, toast } from '../../utils/util'
+import { SHARE_COVER } from '../../config'
+import { callPhone, copyText, enableShare, toast } from '../../utils/util'
 
 Page({
   data: {
     brand: BRAND,
     contact: CONTACT,
     quoteNote: QUOTE_NOTE,
+  },
+
+  onLoad() {
+    enableShare()
   },
 
   onCall() {
@@ -74,6 +79,18 @@ Page({
   },
 
   onShareAppMessage() {
-    return { title: '永耐胶水 · 联系方式与报价说明', path: '/pages/contact/contact' }
+    return {
+      title: '永耐胶水 · 联系方式与报价说明',
+      path: '/pages/contact/contact',
+      imageUrl: SHARE_COVER,
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '永耐胶水 · 电话 / 微信 137 2375 7790，东莞大岭山',
+      query: '',
+      imageUrl: SHARE_COVER,
+    }
   },
 })

@@ -1,5 +1,6 @@
 import { findProduct, PRODUCTS, Product } from '../../data/products'
-import { callPhone } from '../../utils/util'
+import { SHARE_COVER } from '../../config'
+import { callPhone, enableShare, goTab } from '../../utils/util'
 
 const PHONE = '13723757790'
 
@@ -17,6 +18,7 @@ Page({
   },
 
   onLoad(query: Record<string, string | undefined>) {
+    enableShare()
     const model = query.model || ''
     const product = findProduct(model)
 
@@ -89,7 +91,7 @@ Page({
   },
 
   backToList() {
-    wx.switchTab({ url: '/pages/products/products' })
+    goTab('/pages/products/products')
   },
 
   onShareAppMessage() {
@@ -97,6 +99,16 @@ Page({
     return {
       title: product ? `永耐 ${product.model} ${product.name} · ${product.usage}` : '永耐胶水',
       path: `/pages/detail/detail?model=${product ? product.model : ''}`,
+      imageUrl: SHARE_COVER,
+    }
+  },
+
+  onShareTimeline() {
+    const product = this.data.product
+    return {
+      title: product ? `永耐 ${product.model} ${product.name}｜${product.usage}` : '永耐胶水',
+      query: `model=${product ? product.model : ''}`,
+      imageUrl: SHARE_COVER,
     }
   },
 })

@@ -89,6 +89,8 @@
 pwsh .tools/build-assets.ps1
 # 从 docs/brand/logo-source.png 重新生成透明底品牌标志
 pwsh .tools/build-logo.ps1
+# 重新生成 5:4 分享封面
+pwsh .tools/build-share-cover.ps1
 # 重新生成 tabBar / 快捷入口图标
 pwsh .tools/build-icons.ps1
 # 校验 JSON、页面完整性、资源引用、WXML 标签与括号、事件绑定
@@ -98,6 +100,19 @@ node .tools/check-data.js
 # 重新渲染设计预览（需要本机安装 Chrome）
 pwsh .tools/shoot.ps1
 ```
+
+## 分享
+
+7 个页面都实现了 `onShareAppMessage`（转发给好友）与 `onShareTimeline`（分享到朋友圈），
+并在 `onLoad` 里调用 `wx.showShareMenu` 把这两个菜单项打开；统一使用 5:4 封面
+`assets/share/share-cover.png`（由 `.tools/build-share-cover.ps1` 生成）。
+
+产品详情页另有显式「分享」按钮（原生 `button open-type="share"`）——右上角菜单入口
+用户不容易发现，B2B 场景下「把这支胶发给同事/客户」是高频动作。
+
+**单页模式**：从朋友圈打开时微信进入「单页模式」，没有 tabBar，`wx.switchTab` 不可用。
+`utils/util.ts` 的 `goTab()` 会在该模式下（`scene === 1154`）退化为 `wx.navigateTo`，
+否则分享出去的链接点底部 tab 会毫无反应。跳转 tabBar 页面的代码请一律用 `goTab()`。
 
 ## 上传到微信后台
 

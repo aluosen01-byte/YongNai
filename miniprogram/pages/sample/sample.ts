@@ -1,6 +1,6 @@
-import { API_BASE, HAS_BACKEND, SAMPLE_PATH } from '../../config'
+import { API_BASE, HAS_BACKEND, SAMPLE_PATH, SHARE_COVER } from '../../config'
 import { findProduct } from '../../data/products'
-import { callPhone, isPhone, toast } from '../../utils/util'
+import { callPhone, enableShare, goTab, isPhone, toast } from '../../utils/util'
 
 const PHONE = '13723757790'
 const STORAGE_KEY = 'yn_sample_orders'
@@ -42,6 +42,7 @@ Page({
   },
 
   onLoad(query: Record<string, string | undefined>) {
+    enableShare()
     const model = query.model || ''
     if (model) {
       const product = findProduct(model)
@@ -167,10 +168,22 @@ Page({
   },
 
   goHome() {
-    wx.switchTab({ url: '/pages/home/home' })
+    goTab('/pages/home/home')
   },
 
   onShareAppMessage() {
-    return { title: '永耐胶水 · 免费寄样与试胶支持', path: '/pages/sample/sample' }
+    return {
+      title: '永耐胶水 · 免费寄样与试胶支持',
+      path: '/pages/sample/sample',
+      imageUrl: SHARE_COVER,
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '永耐胶水 · 寄样与试胶不收费，样块确认后再谈批量',
+      query: '',
+      imageUrl: SHARE_COVER,
+    }
   },
 })

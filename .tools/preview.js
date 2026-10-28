@@ -130,6 +130,7 @@ const TAG_MAP = {
   block: null,
   input: 'input',
   textarea: 'textarea',
+  button: 'button',
 }
 
 const MODE_FIT = { aspectFit: 'contain', aspectFill: 'cover', scaleToFill: 'fill', widthFix: 'fill' }

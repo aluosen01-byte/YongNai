@@ -15,7 +15,8 @@ import {
   STATS,
   VOC_POINTS,
 } from '../../data/company'
-import { previewImages } from '../../utils/util'
+import { SHARE_COVER } from '../../config'
+import { enableShare, goTab, previewImages } from '../../utils/util'
 
 Page({
   data: {
@@ -41,6 +42,10 @@ Page({
     ],
   },
 
+  onLoad() {
+    enableShare()
+  },
+
   previewCert(e: any) {
     const index = Number(e.currentTarget.dataset.index)
     const urls = this.data.certs.map((item) => item.image)
@@ -60,7 +65,7 @@ Page({
   },
 
   goContact() {
-    wx.switchTab({ url: '/pages/contact/contact' })
+    goTab('/pages/contact/contact')
   },
 
   goSample() {
@@ -68,6 +73,18 @@ Page({
   },
 
   onShareAppMessage() {
-    return { title: '关于永耐胶水 · 水性胶粘剂自有产线', path: '/pages/about/about' }
+    return {
+      title: '关于永耐胶水 · 水性胶粘剂自有产线',
+      path: '/pages/about/about',
+      imageUrl: SHARE_COVER,
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '永耐胶水 · 4,000 ㎡ 自有厂房，年产一万余吨，七项发明专利',
+      query: '',
+      imageUrl: SHARE_COVER,
+    }
   },
 })

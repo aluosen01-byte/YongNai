@@ -11,3 +11,6 @@ export const SAMPLE_PATH = '/api/sample'
 
 /** 是否已配置后台 */
 export const HAS_BACKEND = API_BASE.length > 0
+
+/** 转发 / 朋友圈统一使用的 5:4 分享封面 */
+export const SHARE_COVER = '/assets/share/share-cover.png'

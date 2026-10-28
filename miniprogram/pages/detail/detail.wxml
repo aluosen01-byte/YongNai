@@ -14,10 +14,13 @@
   <block wx:if="{{product}}">
 
     <!-- 产品图 -->
-    <view class="hero" bindtap="previewImage">
-      <view class="hero-bg"></view>
-      <image class="hero-img" src="{{product.image}}" mode="aspectFit" />
+    <view class="hero">
+      <view class="hero-tap" bindtap="previewImage">
+        <view class="hero-bg"></view>
+        <image class="hero-img" src="{{product.image}}" mode="aspectFit" />
+      </view>
       <view class="hero-badge">{{product.seriesName}}</view>
+      <button class="share-fab" open-type="share" hover-class="share-fab-hover">分享</button>
     </view>
 
     <!-- 标题 -->

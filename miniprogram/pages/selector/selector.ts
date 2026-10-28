@@ -8,6 +8,8 @@ import {
   Scenario,
   findProduct,
 } from '../../data/products'
+import { SHARE_COVER } from '../../config'
+import { enableShare } from '../../utils/util'
 
 Page({
   data: {
@@ -20,6 +22,10 @@ Page({
     alternatives: [] as Product[],
     acceptanceNote: ACCEPTANCE_NOTE,
     coatingNote: COATING_NOTE,
+  },
+
+  onLoad() {
+    enableShare()
   },
 
   chooseScenario(e: any) {
@@ -92,6 +98,18 @@ Page({
   },
 
   onShareAppMessage() {
-    return { title: '永耐选胶助手 · 按基材与工况选型号', path: '/pages/selector/selector' }
+    return {
+      title: '永耐选胶助手 · 按基材与工况选型号',
+      path: '/pages/selector/selector',
+      imageUrl: SHARE_COVER,
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '永耐选胶助手 · 三步选到合适的水性胶型号',
+      query: '',
+      imageUrl: SHARE_COVER,
+    }
   },
 })

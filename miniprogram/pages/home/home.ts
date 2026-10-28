@@ -6,7 +6,8 @@ import {
   SAMPLE_STEPS,
   STATS,
 } from '../../data/company'
-import { callPhone } from '../../utils/util'
+import { SHARE_COVER } from '../../config'
+import { callPhone, enableShare, goTab } from '../../utils/util'
 
 const FEATURED = ['SL-113', 'SL-101', 'SL-286', 'SL-128']
 const PHONE = '13723757790'
@@ -47,6 +48,7 @@ Page({
   },
 
   onLoad() {
+    enableShare()
     const seriesList = SERIES.map((item) => {
       const models = PRODUCTS.filter((product) => product.seriesId === item.id)
       return {
@@ -73,14 +75,14 @@ Page({
   onQuick(e: any) {
     const nav = e.currentTarget.dataset.nav as QuickEntry['nav']
     if (nav === 'products' || nav === 'selector') {
-      wx.switchTab({ url: `/pages/${nav}/${nav}` })
+      goTab(`/pages/${nav}/${nav}`)
       return
     }
     wx.navigateTo({ url: `/pages/${nav}/${nav}` })
   },
 
   goSelector() {
-    wx.switchTab({ url: '/pages/selector/selector' })
+    goTab('/pages/selector/selector')
   },
 
   goSample() {
@@ -94,7 +96,7 @@ Page({
   openSeries(e: any) {
     const id = e.currentTarget.dataset.id as string
     wx.setStorageSync('yn_series_filter', id)
-    wx.switchTab({ url: '/pages/products/products' })
+    goTab('/pages/products/products')
   },
 
   openProduct(e: any) {
@@ -110,6 +112,15 @@ Page({
     return {
       title: '永耐胶水 · 一次接触，永不分离',
       path: '/pages/home/home',
+      imageUrl: SHARE_COVER,
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '永耐胶水 · 水性环保胶粘剂，九大系列 17 个在售型号',
+      query: '',
+      imageUrl: SHARE_COVER,
     }
   },
 })

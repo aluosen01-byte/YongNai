@@ -11,6 +11,12 @@
   justify-content: center;
 }
 
+.hero-tap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero-bg {
   position: absolute;
   top: 50%;
@@ -41,6 +47,36 @@
   font-size: 20rpx;
   border-radius: 6rpx;
   letter-spacing: 1rpx;
+}
+
+/* 分享入口：原生 button 需要清掉默认样式 */
+.share-fab {
+  position: absolute;
+  top: 26rpx;
+  right: 28rpx;
+  width: auto;
+  height: 58rpx;
+  line-height: 58rpx;
+  padding: 0 24rpx;
+  margin: 0;
+  border: none;
+  border-radius: 29rpx;
+  background: rgba(31, 58, 68, 0.84);
+  color: #FFFFFF;
+  font-size: 22rpx;
+  font-weight: 500;
+  letter-spacing: 1rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-fab::after {
+  border: none;
+}
+
+.share-fab-hover {
+  opacity: 0.72;
 }
 
 /* ---------- 标题 ---------- */
