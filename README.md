@@ -89,7 +89,7 @@
 pwsh .tools/build-assets.ps1
 # 从 docs/brand/logo-source.png 重新生成透明底品牌标志
 pwsh .tools/build-logo.ps1
-# 重新生成 5:4 分享封面
+# 重新生成分享封面（转发 5:4 + 朋友圈 1:1）
 pwsh .tools/build-share-cover.ps1
 # 重新生成 tabBar / 快捷入口图标
 pwsh .tools/build-icons.ps1
@@ -104,8 +104,20 @@ pwsh .tools/shoot.ps1
 ## 分享
 
 7 个页面都实现了 `onShareAppMessage`（转发给好友）与 `onShareTimeline`（分享到朋友圈），
-并在 `onLoad` 里调用 `wx.showShareMenu` 把这两个菜单项打开；统一使用 5:4 封面
-`assets/share/share-cover.png`（由 `.tools/build-share-cover.ps1` 生成）。
+并在 `onLoad` 里调用 `wx.showShareMenu` 把这两个菜单项打开。
+
+**分享封面按平台比例分两张**（微信转发卡片是 5:4，朋友圈是 1:1，用错比例会被裁切）：
+
+| 用途 | 文件 | 尺寸 |
+| --- | --- | --- |
+| 转发给好友 | `assets/share/share-cover.png` | 640×512（5:4） |
+| 分享到朋友圈 | `assets/share/share-timeline.png` | 750×750（1:1） |
+
+两张都由 `.tools/build-share-cover.ps1` 生成，采用与首页首屏一致的构图：白底 +
+右侧倾斜色块（米色细线 / 墨青条 / 橙色块）+ 左上 logo + 琥珀口号。
+
+> **注意**：`wx.showShareMenu` 的 `menus` 默认值只有 `['shareAppMessage']`，
+> 不显式传 `shareTimeline` 的话朋友圈入口不会出现。
 
 产品详情页另有显式「分享」按钮（原生 `button open-type="share"`）——右上角菜单入口
 用户不容易发现，B2B 场景下「把这支胶发给同事/客户」是高频动作。
