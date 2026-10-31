@@ -6,7 +6,7 @@ import {
   SAMPLE_STEPS,
   STATS,
 } from '../../data/company'
-import { SHARE_COVER } from '../../config'
+import { SHARE_COVER, SHARE_TIMELINE_COVER } from '../../config'
 import { callPhone, enableShare, goTab } from '../../utils/util'
 
 const FEATURED = ['SL-113', 'SL-101', 'SL-286', 'SL-128']
@@ -129,7 +129,7 @@ Page({
     return {
       title: '永耐胶水 · 水性环保胶粘剂，九大系列 17 个在售型号',
       query: '',
-      imageUrl: SHARE_COVER,
+      imageUrl: SHARE_TIMELINE_COVER,
     }
   },
 })

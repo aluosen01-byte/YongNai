@@ -1,5 +1,5 @@
 import { BRAND, CONTACT, QUOTE_NOTE } from '../../data/company'
-import { SHARE_COVER } from '../../config'
+import { SHARE_COVER, SHARE_TIMELINE_COVER } from '../../config'
 import { callPhone, copyText, enableShare, toast } from '../../utils/util'
 
 Page({
@@ -90,7 +90,7 @@ Page({
     return {
       title: '永耐胶水 · 电话 / 微信 137 2375 7790，东莞大岭山',
       query: '',
-      imageUrl: SHARE_COVER,
+      imageUrl: SHARE_TIMELINE_COVER,
     }
   },
 })

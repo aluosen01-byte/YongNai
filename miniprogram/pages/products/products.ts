@@ -1,5 +1,5 @@
 import { PRODUCTS, SERIES, Product } from '../../data/products'
-import { SHARE_COVER } from '../../config'
+import { SHARE_COVER, SHARE_TIMELINE_COVER } from '../../config'
 import { enableShare, goTab } from '../../utils/util'
 
 interface Chip {
@@ -131,7 +131,7 @@ Page({
     return {
       title: '永耐胶水 · 九大系列 17 个在售型号，按木种与工序选型',
       query: '',
-      imageUrl: SHARE_COVER,
+      imageUrl: SHARE_TIMELINE_COVER,
     }
   },
 })

@@ -8,7 +8,7 @@ import {
   Scenario,
   findProduct,
 } from '../../data/products'
-import { SHARE_COVER } from '../../config'
+import { SHARE_COVER, SHARE_TIMELINE_COVER } from '../../config'
 import { enableShare } from '../../utils/util'
 
 Page({
@@ -109,7 +109,7 @@ Page({
     return {
       title: '永耐选胶助手 · 三步选到合适的水性胶型号',
       query: '',
-      imageUrl: SHARE_COVER,
+      imageUrl: SHARE_TIMELINE_COVER,
     }
   },
 })

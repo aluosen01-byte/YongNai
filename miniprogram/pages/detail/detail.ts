@@ -1,5 +1,5 @@
 import { findProduct, PRODUCTS, Product } from '../../data/products'
-import { SHARE_COVER } from '../../config'
+import { SHARE_COVER, SHARE_TIMELINE_COVER } from '../../config'
 import { callPhone, enableShare, goTab } from '../../utils/util'
 
 const PHONE = '13723757790'
@@ -108,7 +108,7 @@ Page({
     return {
       title: product ? `永耐 ${product.model} ${product.name}｜${product.usage}` : '永耐胶水',
       query: `model=${product ? product.model : ''}`,
-      imageUrl: SHARE_COVER,
+      imageUrl: SHARE_TIMELINE_COVER,
     }
   },
 })

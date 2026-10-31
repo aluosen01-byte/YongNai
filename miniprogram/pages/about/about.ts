@@ -15,7 +15,7 @@ import {
   STATS,
   VOC_POINTS,
 } from '../../data/company'
-import { SHARE_COVER } from '../../config'
+import { SHARE_COVER, SHARE_TIMELINE_COVER } from '../../config'
 import { enableShare, goTab, previewImages } from '../../utils/util'
 
 Page({
@@ -84,7 +84,7 @@ Page({
     return {
       title: '永耐胶水 · 4,000 ㎡ 自有厂房，年产一万余吨，七项发明专利',
       query: '',
-      imageUrl: SHARE_COVER,
+      imageUrl: SHARE_TIMELINE_COVER,
     }
   },
 })

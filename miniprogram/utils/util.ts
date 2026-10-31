@@ -62,11 +62,20 @@ export const previewImages = (urls: string[], current?: string) => {
 /** 校验中国大陆手机号 */
 export const isPhone = (value: string) => /^1[3-9]\d{9}$/.test(value)
 
-/** 打开右上角菜单里的「转发给好友」与「分享到朋友圈」 */
+/**
+ * 打开右上角菜单里的「转发给好友」与「分享到朋友圈」。
+ *
+ * 坑一：menus 的默认值是 ['shareAppMessage']，不显式传 shareTimeline 的话
+ *      朋友圈入口不会出现——只定义 onShareTimeline 回调并不够。
+ * 坑二：基础库 < 2.11.3 不支持 menus 参数，调用会失败；失败时保持平台默认即可。
+ */
 export const enableShare = () => {
   wx.showShareMenu({
     withShareTicket: true,
     menus: ['shareAppMessage', 'shareTimeline'],
+    fail: () => {
+      // 低版本基础库不支持 menus，忽略即可
+    },
   } as WechatMiniprogram.ShowShareMenuOption)
 }
 

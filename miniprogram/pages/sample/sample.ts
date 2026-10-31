@@ -1,4 +1,4 @@
-import { API_BASE, HAS_BACKEND, SAMPLE_PATH, SHARE_COVER } from '../../config'
+import { API_BASE, HAS_BACKEND, SAMPLE_PATH, SHARE_COVER, SHARE_TIMELINE_COVER } from '../../config'
 import { findProduct } from '../../data/products'
 import { callPhone, enableShare, goTab, isPhone, toast } from '../../utils/util'
 
@@ -183,7 +183,7 @@ Page({
     return {
       title: '永耐胶水 · 寄样与试胶不收费，样块确认后再谈批量',
       query: '',
-      imageUrl: SHARE_COVER,
+      imageUrl: SHARE_TIMELINE_COVER,
     }
   },
 })

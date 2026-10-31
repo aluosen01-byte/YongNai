@@ -12,5 +12,8 @@ export const SAMPLE_PATH = '/api/sample'
 /** 是否已配置后台 */
 export const HAS_BACKEND = API_BASE.length > 0
 
-/** 转发 / 朋友圈统一使用的 5:4 分享封面 */
+/** 转发给好友的分享封面：微信卡片按 5:4 展示 */
 export const SHARE_COVER = '/assets/share/share-cover.png'
+
+/** 分享到朋友圈的封面：朋友圈按 1:1 展示，用 5:4 会被裁掉上下 */
+export const SHARE_TIMELINE_COVER = '/assets/share/share-timeline.png'
